@@ -30,7 +30,7 @@ public class AuthentificationController {
         return ResponseEntity.ok(authentificationService.authentification(request));
     }
 
-    @GetMapping("/allJoueur")
+    @GetMapping("/allJoueurs")
     public ResponseEntity<List<Joueurs>> getAllJoueurs(){
         return ResponseEntity.ok(authentificationService.getAllJoueurs());
     }
