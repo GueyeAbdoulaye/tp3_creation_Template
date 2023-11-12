@@ -1,30 +1,26 @@
 package com.postgreSql.demo.Config;
 
-import com.postgreSql.demo.Repository.JoueurRepository;
+import com.postgreSql.demo.Repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
 
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final JoueurRepository joueurRepository;
+    private final UsersRepository usersRepository;
     @Bean
     public UserDetailsService userDetailsService(){
-        return username -> joueurRepository.findByUsername(username)
+        return username -> usersRepository.findUsersByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 

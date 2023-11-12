@@ -10,28 +10,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1/login")
 @RequiredArgsConstructor
 public class AuthentificationController {
 
     private final AuthentificationService authentificationService ;
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthentificationResponse> register(
-            @RequestBody RegisterRequest request
-    ) {
-        return ResponseEntity.ok(authentificationService.register(request));
-    }
-
-    @PostMapping("/authentification")
+    // recuperation du token pour une authentification
+    @PostMapping("/authenticate")
     public ResponseEntity<AuthentificationResponse> authentificate(
             @RequestBody AuthentificationRequest request
     ){
         return ResponseEntity.ok(authentificationService.authentification(request));
     }
 
-    @GetMapping("/allJoueurs")
-    public ResponseEntity<List<Joueurs>> getAllJoueurs(){
-        return ResponseEntity.ok(authentificationService.getAllJoueurs());
-    }
+
 }

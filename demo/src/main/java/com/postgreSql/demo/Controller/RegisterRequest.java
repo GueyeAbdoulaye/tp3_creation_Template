@@ -16,7 +16,6 @@ public class RegisterRequest {
     private long age ;
     private String club;
     private String password;
-
     private Role role;
 
 
