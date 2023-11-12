@@ -1,7 +1,7 @@
 package com.postgreSql.demo.Service;
 
 import com.postgreSql.demo.Repository.JoueurRepository;
-import com.postgreSql.demo.model.Joueurs;
+import com.postgreSql.demo.model.Joueur;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +20,15 @@ public class JoueurService {
         this.joueurRepository = joueurRepository;
     }
 
-    public List<Joueurs> getsAllJoueurs(){
-        List<Joueurs> joueurs = new ArrayList<>();
+    public List<Joueur> getsAllJoueurs(){
+        List<Joueur> joueurs = new ArrayList<>();
         joueurRepository.findAll().forEach(joueur -> {
             joueurs.add(joueur);
         });
         return joueurs;
     }
 
-    public Joueurs getJoueur(Long id){
+    public Joueur getJoueur(Long id){
         return joueurRepository.findById(id).orElse(null);
     }
 
@@ -36,12 +36,12 @@ public class JoueurService {
         joueurRepository.deleteById(id);
     }
 
-    public void addJoueur(Joueurs joueurs) {
-        joueurRepository.save(joueurs);
+    public void addJoueur(Joueur joueur) {
+        joueurRepository.save(joueur);
     }
 
-    public void updateJoueur(Joueurs joueurs, Long id) {
-        joueurRepository.save(joueurs);
+    public void updateJoueur(Joueur joueur, Long id) {
+        joueurRepository.save(joueur);
     }
 
 }
