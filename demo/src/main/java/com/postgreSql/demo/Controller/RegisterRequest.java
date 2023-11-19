@@ -1,6 +1,6 @@
 package com.postgreSql.demo.Controller;
 
-import com.postgreSql.demo.model.Role;
+import com.postgreSql.demo.Model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

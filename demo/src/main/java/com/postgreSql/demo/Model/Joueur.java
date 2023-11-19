@@ -1,4 +1,4 @@
-package com.postgreSql.demo.model;
+package com.postgreSql.demo.Model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
