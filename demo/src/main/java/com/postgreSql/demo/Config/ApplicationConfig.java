@@ -2,7 +2,6 @@ package com.postgreSql.demo.Config;
 
 import com.postgreSql.demo.Model.Role;
 import com.postgreSql.demo.Model.User;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

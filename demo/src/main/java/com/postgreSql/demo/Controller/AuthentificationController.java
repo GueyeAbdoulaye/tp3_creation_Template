@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/login")
 @RequiredArgsConstructor
 public class AuthentificationController {
+
     private final AuthentificationService authentificationService ;
 
     // recuperation du token pour une authentification
@@ -17,6 +18,5 @@ public class AuthentificationController {
             @RequestBody AuthenticationRequest request
     ){
         return ResponseEntity.ok(authentificationService.authentification(request));
-
     }
 }

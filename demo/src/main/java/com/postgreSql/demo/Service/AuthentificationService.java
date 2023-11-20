@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class AuthentificationService {
 
     private final AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
     private final JWTService jwtService;
 
     public AuthenticationResponse authentification(AuthenticationRequest request) {
@@ -23,7 +25,7 @@ public class AuthentificationService {
                         request.getPassword()
                 )
         );
-        String jwtToken = jwtService.generateToken((UserDetails) authentication.getPrincipal());
+        var jwtToken = jwtService.generateToken((UserDetails) authentication.getPrincipal());
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();

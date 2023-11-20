@@ -5,7 +5,6 @@ import com.postgreSql.demo.Controller.AuthenticationResponse;
 import com.postgreSql.demo.Controller.AuthentificationController;
 import com.postgreSql.demo.Controller.JoueurController;
 import com.postgreSql.demo.Model.Joueur;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,14 +42,14 @@ class NbaApplicationTests {
     void getAllPlayers() {
         List<Joueur> joueurs = joueurController.getAllPlayers();
         Assertions.assertThat(joueurs).containsExactlyInAnyOrder(
-                Joueur.builder().prenom("Lebron").nom("JAMES").age(38).club("Lakers").build(),
-                Joueur.builder().prenom("Stephan").nom("CURRY").age(30).club("Warriors").build());
+                Joueur.builder().id(1l).prenom("Lebron").nom("JAMES").age(38).club("Lakers").build(),
+                Joueur.builder().id(2l).prenom("Stephan").nom("CURRY").age(30).club("Warriors").build());
     }
 
     @Test
     void getJoueur() {
-        Joueur joueur = joueurController.getJoueur(1l);
-        Assertions.assertThat(joueur).isEqualTo(Joueur.builder().prenom("Lebron").nom("JAMES").age(38).club("Lakers").build());
+        Joueur joueur = joueurController.getJoueur(1l).getBody();
+        Assertions.assertThat(joueur).isEqualTo(Joueur.builder().id(1l).prenom("Lebron").nom("JAMES").age(38).club("Lakers").build());
     }
 
     @Test
@@ -62,13 +61,13 @@ class NbaApplicationTests {
 
     @Test
     void updateJoueur() {
-        Joueur oldJoueur = joueurController.getJoueur(1l);
-        Assertions.assertThat(oldJoueur.getClub()).isEqualTo("Lakers");
+        ResponseEntity<Joueur> oldJoueur = joueurController.getJoueur(1l);
+        Assertions.assertThat(oldJoueur.getBody().getClub()).isEqualTo("Lakers");
 
-        oldJoueur.setClub("Asvel");
-        joueurController.updateJoueur(oldJoueur, oldJoueur.getId());
+        oldJoueur.getBody().setClub("Asvel");
+        joueurController.updateJoueur(oldJoueur.getBody(), oldJoueur.getBody().getId());
 
-        Assertions.assertThat(joueurController.getJoueur(1l).getClub()).isEqualTo("Asvel");
+        Assertions.assertThat(joueurController.getJoueur(1l).getBody().getClub()).isEqualTo("Asvel");
     }
 
     @Test
