@@ -1,7 +1,7 @@
 package com.postgreSql.demo.Controller;
 
-import com.postgreSql.demo.Service.JoueurService;
-import com.postgreSql.demo.Model.Joueur;
+import com.postgreSql.demo.Service.TodoListService;
+import com.postgreSql.demo.Model.TodoList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,44 +11,41 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1/players")
+@RequestMapping("/api/v1/todoList")
 @RequiredArgsConstructor
-public class JoueurController {
+public class TodoListController {
     @Autowired
-    private final JoueurService  joueurService ;
+    private final TodoListService todoListService;
 
     //Donner les infos de tous les joueurs
     @RequestMapping(method = RequestMethod.GET )
-    public List<Joueur> getAllPlayers(){
-        return joueurService.getsAllJoueurs();
+    public List<TodoList> getAllTodoList(){
+        return todoListService.getAllTodoList();
     }
 
     //Donner les infos d'un joueur en particulier
     @RequestMapping(method = RequestMethod.GET , value = "/{id}")
-    public ResponseEntity<Joueur> getJoueur (@PathVariable Long id){
+    public ResponseEntity<TodoList> getTodoList(@PathVariable Long id){
 
-        /*if(token == null || !token.startsWith("Bearer")){
-            throw new RuntimeException("Token pas valide");
-        }*/
-        return ResponseEntity.ok(joueurService.getJoueur(id));
+        return ResponseEntity.ok(todoListService.getTodoList(id));
     }
 
     // Ajouter un joueur
     //@PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
-    public  void addJoueur(@RequestBody Joueur joueur){
-        joueurService.addJoueur(joueur);
+    public  void addTodoList(@RequestBody TodoList joueur){
+        todoListService.addTodoList(joueur);
     }
 
     // Modifier un joueur
     @RequestMapping(method = RequestMethod.PUT , value = "/{id}")
-    public void updateJoueur(@RequestBody Joueur joueur, @PathVariable Long id){
-        joueurService.updateJoueur(joueur, id);
+    public void updateTodoList(@RequestBody TodoList todoList, @PathVariable Long id){
+        todoListService.updateTodoList(todoList, id);
     }
 
     // Supprimer un joueur
     @RequestMapping(method = RequestMethod.DELETE , value = "/{id}")
-    public void deleteJoueur(@PathVariable Long id){
-        joueurService.deleteJoueur(id);
+    public void deleteTodoList(@PathVariable Long id){
+        todoListService.deleteTodoList(id);
     }
 }

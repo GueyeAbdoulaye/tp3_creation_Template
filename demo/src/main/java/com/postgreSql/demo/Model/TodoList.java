@@ -11,15 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "joueurs")
-public class Joueur {
+@Table(name = "todo")
+public class TodoList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String prenom;
-    private String nom;
-    private long age;
-    private String club;
+    private Long todoId;
+    private String todoTitle;
+    private String todoDescription;
 
 }
