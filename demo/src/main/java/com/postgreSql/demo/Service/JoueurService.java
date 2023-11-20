@@ -1,7 +1,7 @@
 package com.postgreSql.demo.Service;
 
 import com.postgreSql.demo.Repository.JoueurRepository;
-import com.postgreSql.demo.model.Joueur;
+import com.postgreSql.demo.Model.Joueur;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

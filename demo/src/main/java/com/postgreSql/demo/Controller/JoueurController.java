@@ -1,10 +1,10 @@
 package com.postgreSql.demo.Controller;
 
 import com.postgreSql.demo.Service.JoueurService;
-import com.postgreSql.demo.model.Joueur;
+import com.postgreSql.demo.Model.Joueur;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,16 +25,12 @@ public class JoueurController {
 
     //Donner les infos d'un joueur en particulier
     @RequestMapping(method = RequestMethod.GET , value = "/{id}")
-    public ResponseEntity<Joueur> getJoueur (@PathVariable Long id){
+    public Joueur getJoueur (@PathVariable Long id){
 
-        /*if(token == null || !token.startsWith("Bearer")){
-            throw new RuntimeException("Token pas valide");
-        }*/
-        return ResponseEntity.ok(joueurService.getJoueur(id));
+        return joueurService.getJoueur(id);
     }
 
     // Ajouter un joueur
-    //@PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     public  void addJoueur(@RequestBody Joueur joueur){
         joueurService.addJoueur(joueur);
