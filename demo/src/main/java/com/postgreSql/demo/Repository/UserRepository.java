@@ -1,6 +1,6 @@
 package com.postgreSql.demo.Repository;
 
-import com.postgreSql.demo.Model.User;
+import com.postgreSql.demo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

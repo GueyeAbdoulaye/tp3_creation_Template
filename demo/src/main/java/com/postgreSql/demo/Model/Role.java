@@ -1,4 +1,4 @@
-package com.postgreSql.demo.Model;
+package com.postgreSql.demo.model;
 
 public enum Role {
     ADMIN, USER

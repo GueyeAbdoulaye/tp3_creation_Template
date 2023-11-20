@@ -13,9 +13,7 @@ public class AuthentificationController {
 
     // recuperation du token pour une authentification
     @PostMapping()
-    public ResponseEntity<AuthenticationResponse> authentificate(
-            @RequestBody AuthenticationRequest request
-    ){
-        return ResponseEntity.ok(authentificationService.authentification(request));
+    public AuthenticationResponse authentificate(@RequestBody AuthenticationRequest request) {
+        return authentificationService.authentification(request);
     }
 }

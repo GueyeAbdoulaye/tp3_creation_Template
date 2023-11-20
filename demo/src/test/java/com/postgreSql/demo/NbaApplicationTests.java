@@ -14,7 +14,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import java.util.List;
 
 @SpringBootTest
-@DirtiesContext // ceci permet d'etre sur un nouveau context (2 joueurs en base) pour chaque test
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD) // ceci permet d'etre sur un nouveau context (2 joueurs en base) pour chaque test
 class NbaApplicationTests {
 
     @Autowired
